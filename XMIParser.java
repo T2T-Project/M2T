@@ -41,7 +41,7 @@ public class XMIParser extends Parser {
 		for (int i = 0; i < packagedElements.getLength(); i++) {
 			Element e = (Element) packagedElements.item(i);
 
-			if (e.getAttribute("xmi:type").equals("uml:Activity")) { /** Début de l'activité */
+			if (e.getAttribute("xmi:type").equals("uml:Activity")) { /** DÃ©but de l'activitÃ© */
 				Activity activity = new Activity();
 				parsedObject = activity;
 
@@ -50,12 +50,12 @@ public class XMIParser extends Parser {
 
 				NodeList activityElements = e.getChildNodes();
 
-				//				*** début de la boucle
+				//				*** dÃ©but de la boucle
 				for (int j = 0; j < activityElements.getLength(); j ++) {
 					if (activityElements.item(j).getNodeType() == Document.ELEMENT_NODE) {
 						Element f = (Element) activityElements.item(j);
 
-				//	Préparation des noeuds ***********************************************************************************************					
+				//	PrÃ©paration des noeuds ***********************************************************************************************					
 						if (f.getTagName().equals("node")) {
 							String nsType = f.getAttribute("xmi:type");
 							String type = nsType.split(":")[1];
@@ -86,11 +86,10 @@ public class XMIParser extends Parser {
 								break;
 							}
 
-							//							Test de JAXB?? test effectué le 20/02/2017 23:48 --> Résultats: pas mal.
 							//							
 
 						}
-						//	Préparations des arcs *****************************************************************************************************					
+						//	PrÃ©parations des arcs *****************************************************************************************************					
 						if (f.getTagName().equals("edge")) {
 							String nsType = f.getAttribute("xmi:type");
 							String type = nsType.split(":")[1];
@@ -137,7 +136,7 @@ public class XMIParser extends Parser {
 				} // *** Fin de la boucle 
 
 
-				/**	1- Début du wiring des noeuds: *****/
+				/**	1- DÃ©but du wiring des noeuds: *****/
 
 				//				********* nodes wiring ********************
 				int count = 0;
@@ -178,7 +177,7 @@ public class XMIParser extends Parser {
 					}
 				} /** Fin du wiring des noeuds *********/
 				
-			} /** fin de l'activité */
+			} /** fin de l'activitÃ© */
 		}
 		return parsedObject;
 	}
